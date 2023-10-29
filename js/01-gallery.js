@@ -1,34 +1,44 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
+const gallery = document.querySelector(".gallery");
+const murkup = renderImg();
 
-const galleryContainer = document.querySelector("ul.gallery");
+gallery.insertAdjacentHTML("afterbegin", murkup);
+gallery.addEventListener("click", openModal);
 
-galleryContainer.insertAdjacentHTML("beforeend", createMarkup(galleryItems));
-
-function createMarkup(galleryItems) {
+function renderImg() {
   return galleryItems
-    .map(
-      ({ preview, original, description }) =>
-        `<li class="gallery__item">
-  <a class="gallery__link" href=${original}>
-    <img
-      class="gallery__image"
-      src=${preview}
-      data-source=${original}
-      alt=${description}
-    />
-  </a>
-</li>`
-    )
+    .map(({ preview, original, description }) => {
+      return `<li class=gallery__item>
+      <a class="gallery__link" href="${original}">
+      <img class=gallery__image src="${preview}" data-source="${original}" alt="${description}"/>
+      </a>
+      </li>`;
+    })
     .join("");
 }
-console.log(createMarkup(galleryItems));
 
-galleryContainer.addEventListener("click", handleClick);
-
-function handleClick(event) {
+function openModal(event) {
   event.preventDefault();
-  if (event.target === event.currentTarget) {
+
+  if (event.target.nodeName !== "IMG") {
     return;
   }
+
+  const urlImg = event.target.dataset.source;
+
+  const imgGallary = basicLightbox.create(
+    `<img src="${event.target.dataset.source}" width="800" height="600" style="border-radius: 5%">`,
+    {
+      onShow: (img) => {
+        window.onkeydown = (evt) => {
+          if (evt.code === "Escape") {
+            img.close();
+          }
+        };
+      },
+    }
+  );
+
+  imgGallary.show();
 }
