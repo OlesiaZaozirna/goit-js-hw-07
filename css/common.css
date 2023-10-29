@@ -8,11 +8,9 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fafafa;
   color: #212121;
   line-height: 1.5;
-  background-image: url("./vibrant-pink-watercolor-painting-background-min.jpg")
-    no-repeat center center fixed;
+  background: url("./picture/3643882-min.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
