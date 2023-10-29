@@ -11,7 +11,7 @@ body {
   background-color: #fafafa;
   color: #212121;
   line-height: 1.5;
-  background: url("./vibrant-pink-watercolor-painting-background-min.jpg")
+  background-image: url("./vibrant-pink-watercolor-painting-background-min.jpg")
     no-repeat center center fixed;
   background-size: cover;
 }
